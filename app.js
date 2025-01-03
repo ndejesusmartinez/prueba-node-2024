@@ -14,7 +14,7 @@ app.use(cors());
 app.use(json());
 config();
 app.use("/api", router);
-app.use('/api-docs', swaggerUi.serve, swaggerUi.setup(specs))
+app.use('/api/docs', swaggerUi.serve, swaggerUi.setup(specs))
 
 const PORT = process.env.PORT || 5000;
 
