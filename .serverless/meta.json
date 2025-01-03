@@ -123,7 +123,7 @@
                     "Properties": {
                       "Code": {
                         "S3Bucket": "serverless-framework-deployments-us-east-1-1edfa506-0631",
-                        "S3Key": "serverless/api/dev/1735318748945-2024-12-27T16:59:08.945Z/api.zip"
+                        "S3Key": "serverless/api/dev/1735937925896-2025-01-03T20:58:45.896Z/api.zip"
                       },
                       "Handler": "server.handler",
                       "Runtime": "nodejs16.x",
@@ -146,7 +146,7 @@
                     "Properties": {
                       "Code": {
                         "S3Bucket": "serverless-framework-deployments-us-east-1-1edfa506-0631",
-                        "S3Key": "serverless/api/dev/1735318748945-2024-12-27T16:59:08.945Z/api.zip"
+                        "S3Key": "serverless/api/dev/1735937925896-2025-01-03T20:58:45.896Z/api.zip"
                       },
                       "Handler": "server.handler",
                       "Runtime": "nodejs16.x",
@@ -169,7 +169,7 @@
                     "Properties": {
                       "Code": {
                         "S3Bucket": "serverless-framework-deployments-us-east-1-1edfa506-0631",
-                        "S3Key": "serverless/api/dev/1735318748945-2024-12-27T16:59:08.945Z/api.zip"
+                        "S3Key": "serverless/api/dev/1735937925896-2025-01-03T20:58:45.896Z/api.zip"
                       },
                       "Handler": "server.handler",
                       "Runtime": "nodejs16.x",
@@ -187,34 +187,34 @@
                       "LoginServiceLogGroup"
                     ]
                   },
-                  "HangarServiceLambdaVersioniuE51CT9TymoRqAZ7Oj9aR8506eqUqNffcMmWGA6A": {
+                  "HangarServiceLambdaVersionE8uxWRvCFdF2PmoCKLO8YB4nr9HvdwwffuyIYVxg": {
                     "Type": "AWS::Lambda::Version",
                     "DeletionPolicy": "Retain",
                     "Properties": {
                       "FunctionName": {
                         "Ref": "HangarServiceLambdaFunction"
                       },
-                      "CodeSha256": "us+VTtPllZijhVHCIJWAKXB8Gx/2DJ2IWbh/2JGAK4I="
+                      "CodeSha256": "tI42UblACj1X/DgY3HpTan3LzJiziWRwHdxopJTl2Kc="
                     }
                   },
-                  "UserServiceLambdaVersionBrs7hlFX61t8oX4FRfbvgNgbfid2YnGECwENG7mgGVY": {
+                  "UserServiceLambdaVersion8fIIEKS3lGDXzqaERdb7Lnjj7oJjz8RjvAPv8VR3rP8": {
                     "Type": "AWS::Lambda::Version",
                     "DeletionPolicy": "Retain",
                     "Properties": {
                       "FunctionName": {
                         "Ref": "UserServiceLambdaFunction"
                       },
-                      "CodeSha256": "us+VTtPllZijhVHCIJWAKXB8Gx/2DJ2IWbh/2JGAK4I="
+                      "CodeSha256": "tI42UblACj1X/DgY3HpTan3LzJiziWRwHdxopJTl2Kc="
                     }
                   },
-                  "LoginServiceLambdaVersionofTDVi6fXJihgDMSpcZAUdNOoYPdDXS8AgBIOSpr19Y": {
+                  "LoginServiceLambdaVersionl5oNTBHewzodzztA4XO96Abf4bfHLDa8B3PUVjEF8Y": {
                     "Type": "AWS::Lambda::Version",
                     "DeletionPolicy": "Retain",
                     "Properties": {
                       "FunctionName": {
                         "Ref": "LoginServiceLambdaFunction"
                       },
-                      "CodeSha256": "us+VTtPllZijhVHCIJWAKXB8Gx/2DJ2IWbh/2JGAK4I="
+                      "CodeSha256": "tI42UblACj1X/DgY3HpTan3LzJiziWRwHdxopJTl2Kc="
                     }
                   },
                   "ApiGatewayRestApi": {
@@ -268,18 +268,7 @@
                       }
                     }
                   },
-                  "ApiGatewayResourceApiLogin": {
-                    "Type": "AWS::ApiGateway::Resource",
-                    "Properties": {
-                      "ParentId": {
-                        "Ref": "ApiGatewayResourceApi"
-                      },
-                      "PathPart": "login",
-                      "RestApiId": {
-                        "Ref": "ApiGatewayRestApi"
-                      }
-                    }
-                  },
+                  "ApiGatewayResourceApiToken": "<REDACTED>",
                   "ApiGatewayMethodApiHangarOptions": {
                     "Type": "AWS::ApiGateway::Method",
                     "Properties": {
@@ -370,51 +359,7 @@
                       }
                     }
                   },
-                  "ApiGatewayMethodApiLoginOptions": {
-                    "Type": "AWS::ApiGateway::Method",
-                    "Properties": {
-                      "AuthorizationType": "NONE",
-                      "HttpMethod": "OPTIONS",
-                      "MethodResponses": [
-                        {
-                          "StatusCode": "200",
-                          "ResponseParameters": {
-                            "method.response.header.Access-Control-Allow-Origin": true,
-                            "method.response.header.Access-Control-Allow-Headers": true,
-                            "method.response.header.Access-Control-Allow-Methods": true
-                          },
-                          "ResponseModels": {}
-                        }
-                      ],
-                      "RequestParameters": {},
-                      "Integration": {
-                        "Type": "MOCK",
-                        "RequestTemplates": {
-                          "application/json": "{statusCode:200}"
-                        },
-                        "ContentHandling": "CONVERT_TO_TEXT",
-                        "IntegrationResponses": [
-                          {
-                            "StatusCode": "200",
-                            "ResponseParameters": {
-                              "method.response.header.Access-Control-Allow-Origin": "'*'",
-                              "method.response.header.Access-Control-Allow-Headers": "'Content-Type,X-Amz-Date,Authorization,X-Api-Key,X-Amz-Security-Token,X-Amz-User-Agent,X-Amzn-Trace-Id'",
-                              "method.response.header.Access-Control-Allow-Methods": "'OPTIONS,DELETE,GET,HEAD,PATCH,POST,PUT'"
-                            },
-                            "ResponseTemplates": {
-                              "application/json": ""
-                            }
-                          }
-                        ]
-                      },
-                      "ResourceId": {
-                        "Ref": "ApiGatewayResourceApiLogin"
-                      },
-                      "RestApiId": {
-                        "Ref": "ApiGatewayRestApi"
-                      }
-                    }
-                  },
+                  "ApiGatewayMethodApiTokenOptions": "<REDACTED>",
                   "ApiGatewayMethodApiHangarAny": {
                     "Type": "AWS::ApiGateway::Method",
                     "Properties": {
@@ -507,53 +452,8 @@
                       "UserServiceLambdaPermissionApiGateway"
                     ]
                   },
-                  "ApiGatewayMethodApiLoginAny": {
-                    "Type": "AWS::ApiGateway::Method",
-                    "Properties": {
-                      "HttpMethod": "ANY",
-                      "RequestParameters": {},
-                      "ResourceId": {
-                        "Ref": "ApiGatewayResourceApiLogin"
-                      },
-                      "RestApiId": {
-                        "Ref": "ApiGatewayRestApi"
-                      },
-                      "ApiKeyRequired": "<REDACTED>",
-                      "AuthorizationType": "NONE",
-                      "Integration": {
-                        "IntegrationHttpMethod": "POST",
-                        "Type": "AWS_PROXY",
-                        "Uri": {
-                          "Fn::Join": [
-                            "",
-                            [
-                              "arn:",
-                              {
-                                "Ref": "AWS::Partition"
-                              },
-                              ":apigateway:",
-                              {
-                                "Ref": "AWS::Region"
-                              },
-                              ":lambda:path/2015-03-31/functions/",
-                              {
-                                "Fn::GetAtt": [
-                                  "LoginServiceLambdaFunction",
-                                  "Arn"
-                                ]
-                              },
-                              "/invocations"
-                            ]
-                          ]
-                        }
-                      },
-                      "MethodResponses": []
-                    },
-                    "DependsOn": [
-                      "LoginServiceLambdaPermissionApiGateway"
-                    ]
-                  },
-                  "ApiGatewayDeployment1735318734674": {
+                  "ApiGatewayMethodApiTokenAny": "<REDACTED>",
+                  "ApiGatewayDeployment1735937917283": {
                     "Type": "AWS::ApiGateway::Deployment",
                     "Properties": {
                       "RestApiId": {
@@ -564,10 +464,10 @@
                     "DependsOn": [
                       "ApiGatewayMethodApiHangarOptions",
                       "ApiGatewayMethodApiUsersOptions",
-                      "ApiGatewayMethodApiLoginOptions",
+                      "ApiGatewayMethodApiTokenOptions",
                       "ApiGatewayMethodApiHangarAny",
                       "ApiGatewayMethodApiUsersAny",
-                      "ApiGatewayMethodApiLoginAny"
+                      "ApiGatewayMethodApiTokenAny"
                     ]
                   },
                   "HangarServiceLambdaPermissionApiGateway": {
@@ -692,7 +592,7 @@
                   "HangarServiceLambdaFunctionQualifiedArn": {
                     "Description": "Current Lambda function version",
                     "Value": {
-                      "Ref": "HangarServiceLambdaVersioniuE51CT9TymoRqAZ7Oj9aR8506eqUqNffcMmWGA6A"
+                      "Ref": "HangarServiceLambdaVersionE8uxWRvCFdF2PmoCKLO8YB4nr9HvdwwffuyIYVxg"
                     },
                     "Export": {
                       "Name": "sls-api-dev-HangarServiceLambdaFunctionQualifiedArn"
@@ -701,7 +601,7 @@
                   "UserServiceLambdaFunctionQualifiedArn": {
                     "Description": "Current Lambda function version",
                     "Value": {
-                      "Ref": "UserServiceLambdaVersionBrs7hlFX61t8oX4FRfbvgNgbfid2YnGECwENG7mgGVY"
+                      "Ref": "UserServiceLambdaVersion8fIIEKS3lGDXzqaERdb7Lnjj7oJjz8RjvAPv8VR3rP8"
                     },
                     "Export": {
                       "Name": "sls-api-dev-UserServiceLambdaFunctionQualifiedArn"
@@ -710,7 +610,7 @@
                   "LoginServiceLambdaFunctionQualifiedArn": {
                     "Description": "Current Lambda function version",
                     "Value": {
-                      "Ref": "LoginServiceLambdaVersionofTDVi6fXJihgDMSpcZAUdNOoYPdDXS8AgBIOSpr19Y"
+                      "Ref": "LoginServiceLambdaVersionl5oNTBHewzodzztA4XO96Abf4bfHLDa8B3PUVjEF8Y"
                     },
                     "Export": {
                       "Name": "sls-api-dev-LoginServiceLambdaFunctionQualifiedArn"
@@ -781,7 +681,7 @@
                 "timeout": 6,
                 "runtime": "nodejs16.x",
                 "vpc": {},
-                "versionLogicalId": "HangarServiceLambdaVersioniuE51CT9TymoRqAZ7Oj9aR8506eqUqNffcMmWGA6A"
+                "versionLogicalId": "HangarServiceLambdaVersionE8uxWRvCFdF2PmoCKLO8YB4nr9HvdwwffuyIYVxg"
               },
               "userService": {
                 "handler": "server.handler",
@@ -817,14 +717,14 @@
                 "timeout": 6,
                 "runtime": "nodejs16.x",
                 "vpc": {},
-                "versionLogicalId": "UserServiceLambdaVersionBrs7hlFX61t8oX4FRfbvgNgbfid2YnGECwENG7mgGVY"
+                "versionLogicalId": "UserServiceLambdaVersion8fIIEKS3lGDXzqaERdb7Lnjj7oJjz8RjvAPv8VR3rP8"
               },
               "loginService": {
                 "handler": "server.handler",
                 "events": [
                   {
                     "http": {
-                      "path": "api/login",
+                      "path": "api/token",
                       "method": "any",
                       "cors": {
                         "origin": "*",
@@ -853,7 +753,7 @@
                 "timeout": 6,
                 "runtime": "nodejs16.x",
                 "vpc": {},
-                "versionLogicalId": "LoginServiceLambdaVersionofTDVi6fXJihgDMSpcZAUdNOoYPdDXS8AgBIOSpr19Y"
+                "versionLogicalId": "LoginServiceLambdaVersionl5oNTBHewzodzztA4XO96Abf4bfHLDa8B3PUVjEF8Y"
               }
             },
             "plugins": [
@@ -993,7 +893,7 @@
               "Properties": {
                 "Code": {
                   "S3Bucket": "serverless-framework-deployments-us-east-1-1edfa506-0631",
-                  "S3Key": "serverless/api/dev/1735318748945-2024-12-27T16:59:08.945Z/api.zip"
+                  "S3Key": "serverless/api/dev/1735937925896-2025-01-03T20:58:45.896Z/api.zip"
                 },
                 "Handler": "server.handler",
                 "Runtime": "nodejs16.x",
@@ -1016,7 +916,7 @@
               "Properties": {
                 "Code": {
                   "S3Bucket": "serverless-framework-deployments-us-east-1-1edfa506-0631",
-                  "S3Key": "serverless/api/dev/1735318748945-2024-12-27T16:59:08.945Z/api.zip"
+                  "S3Key": "serverless/api/dev/1735937925896-2025-01-03T20:58:45.896Z/api.zip"
                 },
                 "Handler": "server.handler",
                 "Runtime": "nodejs16.x",
@@ -1039,7 +939,7 @@
               "Properties": {
                 "Code": {
                   "S3Bucket": "serverless-framework-deployments-us-east-1-1edfa506-0631",
-                  "S3Key": "serverless/api/dev/1735318748945-2024-12-27T16:59:08.945Z/api.zip"
+                  "S3Key": "serverless/api/dev/1735937925896-2025-01-03T20:58:45.896Z/api.zip"
                 },
                 "Handler": "server.handler",
                 "Runtime": "nodejs16.x",
@@ -1057,34 +957,34 @@
                 "LoginServiceLogGroup"
               ]
             },
-            "HangarServiceLambdaVersioniuE51CT9TymoRqAZ7Oj9aR8506eqUqNffcMmWGA6A": {
+            "HangarServiceLambdaVersionE8uxWRvCFdF2PmoCKLO8YB4nr9HvdwwffuyIYVxg": {
               "Type": "AWS::Lambda::Version",
               "DeletionPolicy": "Retain",
               "Properties": {
                 "FunctionName": {
                   "Ref": "HangarServiceLambdaFunction"
                 },
-                "CodeSha256": "us+VTtPllZijhVHCIJWAKXB8Gx/2DJ2IWbh/2JGAK4I="
+                "CodeSha256": "tI42UblACj1X/DgY3HpTan3LzJiziWRwHdxopJTl2Kc="
               }
             },
-            "UserServiceLambdaVersionBrs7hlFX61t8oX4FRfbvgNgbfid2YnGECwENG7mgGVY": {
+            "UserServiceLambdaVersion8fIIEKS3lGDXzqaERdb7Lnjj7oJjz8RjvAPv8VR3rP8": {
               "Type": "AWS::Lambda::Version",
               "DeletionPolicy": "Retain",
               "Properties": {
                 "FunctionName": {
                   "Ref": "UserServiceLambdaFunction"
                 },
-                "CodeSha256": "us+VTtPllZijhVHCIJWAKXB8Gx/2DJ2IWbh/2JGAK4I="
+                "CodeSha256": "tI42UblACj1X/DgY3HpTan3LzJiziWRwHdxopJTl2Kc="
               }
             },
-            "LoginServiceLambdaVersionofTDVi6fXJihgDMSpcZAUdNOoYPdDXS8AgBIOSpr19Y": {
+            "LoginServiceLambdaVersionl5oNTBHewzodzztA4XO96Abf4bfHLDa8B3PUVjEF8Y": {
               "Type": "AWS::Lambda::Version",
               "DeletionPolicy": "Retain",
               "Properties": {
                 "FunctionName": {
                   "Ref": "LoginServiceLambdaFunction"
                 },
-                "CodeSha256": "us+VTtPllZijhVHCIJWAKXB8Gx/2DJ2IWbh/2JGAK4I="
+                "CodeSha256": "tI42UblACj1X/DgY3HpTan3LzJiziWRwHdxopJTl2Kc="
               }
             },
             "ApiGatewayRestApi": {
@@ -1138,18 +1038,7 @@
                 }
               }
             },
-            "ApiGatewayResourceApiLogin": {
-              "Type": "AWS::ApiGateway::Resource",
-              "Properties": {
-                "ParentId": {
-                  "Ref": "ApiGatewayResourceApi"
-                },
-                "PathPart": "login",
-                "RestApiId": {
-                  "Ref": "ApiGatewayRestApi"
-                }
-              }
-            },
+            "ApiGatewayResourceApiToken": "<REDACTED>",
             "ApiGatewayMethodApiHangarOptions": {
               "Type": "AWS::ApiGateway::Method",
               "Properties": {
@@ -1240,51 +1129,7 @@
                 }
               }
             },
-            "ApiGatewayMethodApiLoginOptions": {
-              "Type": "AWS::ApiGateway::Method",
-              "Properties": {
-                "AuthorizationType": "NONE",
-                "HttpMethod": "OPTIONS",
-                "MethodResponses": [
-                  {
-                    "StatusCode": "200",
-                    "ResponseParameters": {
-                      "method.response.header.Access-Control-Allow-Origin": true,
-                      "method.response.header.Access-Control-Allow-Headers": true,
-                      "method.response.header.Access-Control-Allow-Methods": true
-                    },
-                    "ResponseModels": {}
-                  }
-                ],
-                "RequestParameters": {},
-                "Integration": {
-                  "Type": "MOCK",
-                  "RequestTemplates": {
-                    "application/json": "{statusCode:200}"
-                  },
-                  "ContentHandling": "CONVERT_TO_TEXT",
-                  "IntegrationResponses": [
-                    {
-                      "StatusCode": "200",
-                      "ResponseParameters": {
-                        "method.response.header.Access-Control-Allow-Origin": "'*'",
-                        "method.response.header.Access-Control-Allow-Headers": "'Content-Type,X-Amz-Date,Authorization,X-Api-Key,X-Amz-Security-Token,X-Amz-User-Agent,X-Amzn-Trace-Id'",
-                        "method.response.header.Access-Control-Allow-Methods": "'OPTIONS,DELETE,GET,HEAD,PATCH,POST,PUT'"
-                      },
-                      "ResponseTemplates": {
-                        "application/json": ""
-                      }
-                    }
-                  ]
-                },
-                "ResourceId": {
-                  "Ref": "ApiGatewayResourceApiLogin"
-                },
-                "RestApiId": {
-                  "Ref": "ApiGatewayRestApi"
-                }
-              }
-            },
+            "ApiGatewayMethodApiTokenOptions": "<REDACTED>",
             "ApiGatewayMethodApiHangarAny": {
               "Type": "AWS::ApiGateway::Method",
               "Properties": {
@@ -1377,53 +1222,8 @@
                 "UserServiceLambdaPermissionApiGateway"
               ]
             },
-            "ApiGatewayMethodApiLoginAny": {
-              "Type": "AWS::ApiGateway::Method",
-              "Properties": {
-                "HttpMethod": "ANY",
-                "RequestParameters": {},
-                "ResourceId": {
-                  "Ref": "ApiGatewayResourceApiLogin"
-                },
-                "RestApiId": {
-                  "Ref": "ApiGatewayRestApi"
-                },
-                "ApiKeyRequired": "<REDACTED>",
-                "AuthorizationType": "NONE",
-                "Integration": {
-                  "IntegrationHttpMethod": "POST",
-                  "Type": "AWS_PROXY",
-                  "Uri": {
-                    "Fn::Join": [
-                      "",
-                      [
-                        "arn:",
-                        {
-                          "Ref": "AWS::Partition"
-                        },
-                        ":apigateway:",
-                        {
-                          "Ref": "AWS::Region"
-                        },
-                        ":lambda:path/2015-03-31/functions/",
-                        {
-                          "Fn::GetAtt": [
-                            "LoginServiceLambdaFunction",
-                            "Arn"
-                          ]
-                        },
-                        "/invocations"
-                      ]
-                    ]
-                  }
-                },
-                "MethodResponses": []
-              },
-              "DependsOn": [
-                "LoginServiceLambdaPermissionApiGateway"
-              ]
-            },
-            "ApiGatewayDeployment1735318734674": {
+            "ApiGatewayMethodApiTokenAny": "<REDACTED>",
+            "ApiGatewayDeployment1735937917283": {
               "Type": "AWS::ApiGateway::Deployment",
               "Properties": {
                 "RestApiId": {
@@ -1434,10 +1234,10 @@
               "DependsOn": [
                 "ApiGatewayMethodApiHangarOptions",
                 "ApiGatewayMethodApiUsersOptions",
-                "ApiGatewayMethodApiLoginOptions",
+                "ApiGatewayMethodApiTokenOptions",
                 "ApiGatewayMethodApiHangarAny",
                 "ApiGatewayMethodApiUsersAny",
-                "ApiGatewayMethodApiLoginAny"
+                "ApiGatewayMethodApiTokenAny"
               ]
             },
             "HangarServiceLambdaPermissionApiGateway": {
@@ -1562,7 +1362,7 @@
             "HangarServiceLambdaFunctionQualifiedArn": {
               "Description": "Current Lambda function version",
               "Value": {
-                "Ref": "HangarServiceLambdaVersioniuE51CT9TymoRqAZ7Oj9aR8506eqUqNffcMmWGA6A"
+                "Ref": "HangarServiceLambdaVersionE8uxWRvCFdF2PmoCKLO8YB4nr9HvdwwffuyIYVxg"
               },
               "Export": {
                 "Name": "sls-api-dev-HangarServiceLambdaFunctionQualifiedArn"
@@ -1571,7 +1371,7 @@
             "UserServiceLambdaFunctionQualifiedArn": {
               "Description": "Current Lambda function version",
               "Value": {
-                "Ref": "UserServiceLambdaVersionBrs7hlFX61t8oX4FRfbvgNgbfid2YnGECwENG7mgGVY"
+                "Ref": "UserServiceLambdaVersion8fIIEKS3lGDXzqaERdb7Lnjj7oJjz8RjvAPv8VR3rP8"
               },
               "Export": {
                 "Name": "sls-api-dev-UserServiceLambdaFunctionQualifiedArn"
@@ -1580,7 +1380,7 @@
             "LoginServiceLambdaFunctionQualifiedArn": {
               "Description": "Current Lambda function version",
               "Value": {
-                "Ref": "LoginServiceLambdaVersionofTDVi6fXJihgDMSpcZAUdNOoYPdDXS8AgBIOSpr19Y"
+                "Ref": "LoginServiceLambdaVersionl5oNTBHewzodzztA4XO96Abf4bfHLDa8B3PUVjEF8Y"
               },
               "Export": {
                 "Name": "sls-api-dev-LoginServiceLambdaFunctionQualifiedArn"
@@ -1651,7 +1451,7 @@
           "timeout": 6,
           "runtime": "nodejs16.x",
           "vpc": {},
-          "versionLogicalId": "HangarServiceLambdaVersioniuE51CT9TymoRqAZ7Oj9aR8506eqUqNffcMmWGA6A"
+          "versionLogicalId": "HangarServiceLambdaVersionE8uxWRvCFdF2PmoCKLO8YB4nr9HvdwwffuyIYVxg"
         },
         "userService": {
           "handler": "server.handler",
@@ -1687,14 +1487,14 @@
           "timeout": 6,
           "runtime": "nodejs16.x",
           "vpc": {},
-          "versionLogicalId": "UserServiceLambdaVersionBrs7hlFX61t8oX4FRfbvgNgbfid2YnGECwENG7mgGVY"
+          "versionLogicalId": "UserServiceLambdaVersion8fIIEKS3lGDXzqaERdb7Lnjj7oJjz8RjvAPv8VR3rP8"
         },
         "loginService": {
           "handler": "server.handler",
           "events": [
             {
               "http": {
-                "path": "api/login",
+                "path": "api/token",
                 "method": "any",
                 "cors": {
                   "origin": "*",
@@ -1723,21 +1523,21 @@
           "timeout": 6,
           "runtime": "nodejs16.x",
           "vpc": {},
-          "versionLogicalId": "LoginServiceLambdaVersionofTDVi6fXJihgDMSpcZAUdNOoYPdDXS8AgBIOSpr19Y"
+          "versionLogicalId": "LoginServiceLambdaVersionl5oNTBHewzodzztA4XO96Abf4bfHLDa8B3PUVjEF8Y"
         }
       },
       "plugins": [
         "serverless-offline"
       ]
     },
-    "serviceRawFile": "service: api\r\n\r\nprovider:\r\n  name: aws\r\n  runtime: nodejs16.x\r\n  stage: dev\r\n  region: us-east-1\r\n\r\nfunctions:\r\n  hangarService:\r\n    handler: server.handler   # Este es el archivo que Lambda invoca\r\n    events:\r\n      - http:\r\n          path: api/hangar   # Ruta para el servicio de hangares\r\n          method: any                   # Permite cualquier método (POST, GET, etc.)\r\n          cors: true\r\n\r\n  userService:\r\n    handler: server.handler   # Este es el archivo que Lambda invoca\r\n    events:\r\n      - http:\r\n          path: api/users   # Ruta para el servicio de hangares\r\n          method: any                   # Permite cualquier método (POST, GET, etc.)\r\n          cors: true\r\n\r\n  loginService:\r\n    handler: server.handler   # Este es el archivo que Lambda invoca\r\n    events:\r\n      - http:\r\n          path: api/login   # Ruta para el servicio de hangares\r\n          method: any                   # Permite cualquier método (POST, GET, etc.)\r\n          cors: true\r\n\r\nplugins:\r\n  - serverless-offline  # Permite ejecutar el servicio localmente\r\n",
+    "serviceRawFile": "service: api\r\n\r\nprovider:\r\n  name: aws\r\n  runtime: nodejs16.x\r\n  stage: dev\r\n  region: us-east-1\r\n\r\nfunctions:\r\n  hangarService:\r\n    handler: server.handler   # Este es el archivo que Lambda invoca\r\n    events:\r\n      - http:\r\n          path: api/hangar   # Ruta para el servicio de hangares\r\n          method: any                   # Permite cualquier método (POST, GET, etc.)\r\n          cors: true\r\n\r\n  userService:\r\n    handler: server.handler   # Este es el archivo que Lambda invoca\r\n    events:\r\n      - http:\r\n          path: api/users   # Ruta para el servicio de hangares\r\n          method: any                   # Permite cualquier método (POST, GET, etc.)\r\n          cors: true\r\n\r\n  loginService:\r\n    handler: server.handler   # Este es el archivo que Lambda invoca\r\n    events:\r\n      - http:\r\n          path: api/token   # Ruta para el servicio de hangares\r\n          method: any                   # Permite cualquier método (POST, GET, etc.)\r\n          cors: true\r\n\r\nplugins:\r\n  - serverless-offline  # Permite ejecutar el servicio localmente\r\n",
     "command": [
       "deploy"
     ],
     "options": {},
     "error": null,
     "params": {},
-    "machineId": "1260b115b2f957deae52c62232e443aa",
+    "machineId": "8654790400de273fe86a04422bacf3b2",
     "stage": "dev",
     "accessKeyV2": "<REDACTED>",
     "accessKeyV1": "<REDACTED>",
@@ -1766,24 +1566,24 @@
     "serviceUniqueId": "arn:aws:cloudformation:us-east-1:225989338909:stack/api-dev/40a23640-bd84-11ef-8df9-0affc3de2583",
     "serviceProviderAwsCfStackId": "arn:aws:cloudformation:us-east-1:225989338909:stack/api-dev/40a23640-bd84-11ef-8df9-0affc3de2583",
     "serviceProviderAwsCfStackCreated": "2024-12-18T21:08:39.062Z",
-    "serviceProviderAwsCfStackUpdated": "2024-12-27T16:59:13.427Z",
+    "serviceProviderAwsCfStackUpdated": "2025-01-03T20:58:45.528Z",
     "serviceProviderAwsCfStackStatus": "UPDATE_COMPLETE",
     "serviceProviderAwsCfStackOutputs": [
       {
         "OutputKey": "UserServiceLambdaFunctionQualifiedArn",
-        "OutputValue": "arn:aws:lambda:us-east-1:225989338909:function:api-dev-userService:3",
+        "OutputValue": "arn:aws:lambda:us-east-1:225989338909:function:api-dev-userService:6",
         "Description": "Current Lambda function version",
         "ExportName": "sls-api-dev-UserServiceLambdaFunctionQualifiedArn"
       },
       {
         "OutputKey": "HangarServiceLambdaFunctionQualifiedArn",
-        "OutputValue": "arn:aws:lambda:us-east-1:225989338909:function:api-dev-hangarService:4",
+        "OutputValue": "arn:aws:lambda:us-east-1:225989338909:function:api-dev-hangarService:7",
         "Description": "Current Lambda function version",
         "ExportName": "sls-api-dev-HangarServiceLambdaFunctionQualifiedArn"
       },
       {
         "OutputKey": "LoginServiceLambdaFunctionQualifiedArn",
-        "OutputValue": "arn:aws:lambda:us-east-1:225989338909:function:api-dev-loginService:3",
+        "OutputValue": "arn:aws:lambda:us-east-1:225989338909:function:api-dev-loginService:6",
         "Description": "Current Lambda function version",
         "ExportName": "sls-api-dev-LoginServiceLambdaFunctionQualifiedArn"
       },

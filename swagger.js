@@ -10,7 +10,7 @@ export const options = {
     },
     servers: [
       {
-        url: 'http://localhost:8000',
+        url: 'https://cdizdolpz4.execute-api.us-east-1.amazonaws.com/dev',
         description: 'Servidor local',
       },
     ],

@@ -103,7 +103,7 @@
       "Properties": {
         "Code": {
           "S3Bucket": "serverless-framework-deployments-us-east-1-1edfa506-0631",
-          "S3Key": "serverless/api/dev/1735318748945-2024-12-27T16:59:08.945Z/api.zip"
+          "S3Key": "serverless/api/dev/1735937925896-2025-01-03T20:58:45.896Z/api.zip"
         },
         "Handler": "server.handler",
         "Runtime": "nodejs16.x",
@@ -126,7 +126,7 @@
       "Properties": {
         "Code": {
           "S3Bucket": "serverless-framework-deployments-us-east-1-1edfa506-0631",
-          "S3Key": "serverless/api/dev/1735318748945-2024-12-27T16:59:08.945Z/api.zip"
+          "S3Key": "serverless/api/dev/1735937925896-2025-01-03T20:58:45.896Z/api.zip"
         },
         "Handler": "server.handler",
         "Runtime": "nodejs16.x",
@@ -149,7 +149,7 @@
       "Properties": {
         "Code": {
           "S3Bucket": "serverless-framework-deployments-us-east-1-1edfa506-0631",
-          "S3Key": "serverless/api/dev/1735318748945-2024-12-27T16:59:08.945Z/api.zip"
+          "S3Key": "serverless/api/dev/1735937925896-2025-01-03T20:58:45.896Z/api.zip"
         },
         "Handler": "server.handler",
         "Runtime": "nodejs16.x",
@@ -167,34 +167,34 @@
         "LoginServiceLogGroup"
       ]
     },
-    "HangarServiceLambdaVersioniuE51CT9TymoRqAZ7Oj9aR8506eqUqNffcMmWGA6A": {
+    "HangarServiceLambdaVersionE8uxWRvCFdF2PmoCKLO8YB4nr9HvdwwffuyIYVxg": {
       "Type": "AWS::Lambda::Version",
       "DeletionPolicy": "Retain",
       "Properties": {
         "FunctionName": {
           "Ref": "HangarServiceLambdaFunction"
         },
-        "CodeSha256": "us+VTtPllZijhVHCIJWAKXB8Gx/2DJ2IWbh/2JGAK4I="
+        "CodeSha256": "tI42UblACj1X/DgY3HpTan3LzJiziWRwHdxopJTl2Kc="
       }
     },
-    "UserServiceLambdaVersionBrs7hlFX61t8oX4FRfbvgNgbfid2YnGECwENG7mgGVY": {
+    "UserServiceLambdaVersion8fIIEKS3lGDXzqaERdb7Lnjj7oJjz8RjvAPv8VR3rP8": {
       "Type": "AWS::Lambda::Version",
       "DeletionPolicy": "Retain",
       "Properties": {
         "FunctionName": {
           "Ref": "UserServiceLambdaFunction"
         },
-        "CodeSha256": "us+VTtPllZijhVHCIJWAKXB8Gx/2DJ2IWbh/2JGAK4I="
+        "CodeSha256": "tI42UblACj1X/DgY3HpTan3LzJiziWRwHdxopJTl2Kc="
       }
     },
-    "LoginServiceLambdaVersionofTDVi6fXJihgDMSpcZAUdNOoYPdDXS8AgBIOSpr19Y": {
+    "LoginServiceLambdaVersionl5oNTBHewzodzztA4XO96Abf4bfHLDa8B3PUVjEF8Y": {
       "Type": "AWS::Lambda::Version",
       "DeletionPolicy": "Retain",
       "Properties": {
         "FunctionName": {
           "Ref": "LoginServiceLambdaFunction"
         },
-        "CodeSha256": "us+VTtPllZijhVHCIJWAKXB8Gx/2DJ2IWbh/2JGAK4I="
+        "CodeSha256": "tI42UblACj1X/DgY3HpTan3LzJiziWRwHdxopJTl2Kc="
       }
     },
     "ApiGatewayRestApi": {
@@ -248,13 +248,13 @@
         }
       }
     },
-    "ApiGatewayResourceApiLogin": {
+    "ApiGatewayResourceApiToken": {
       "Type": "AWS::ApiGateway::Resource",
       "Properties": {
         "ParentId": {
           "Ref": "ApiGatewayResourceApi"
         },
-        "PathPart": "login",
+        "PathPart": "token",
         "RestApiId": {
           "Ref": "ApiGatewayRestApi"
         }
@@ -350,7 +350,7 @@
         }
       }
     },
-    "ApiGatewayMethodApiLoginOptions": {
+    "ApiGatewayMethodApiTokenOptions": {
       "Type": "AWS::ApiGateway::Method",
       "Properties": {
         "AuthorizationType": "NONE",
@@ -388,7 +388,7 @@
           ]
         },
         "ResourceId": {
-          "Ref": "ApiGatewayResourceApiLogin"
+          "Ref": "ApiGatewayResourceApiToken"
         },
         "RestApiId": {
           "Ref": "ApiGatewayRestApi"
@@ -487,13 +487,13 @@
         "UserServiceLambdaPermissionApiGateway"
       ]
     },
-    "ApiGatewayMethodApiLoginAny": {
+    "ApiGatewayMethodApiTokenAny": {
       "Type": "AWS::ApiGateway::Method",
       "Properties": {
         "HttpMethod": "ANY",
         "RequestParameters": {},
         "ResourceId": {
-          "Ref": "ApiGatewayResourceApiLogin"
+          "Ref": "ApiGatewayResourceApiToken"
         },
         "RestApiId": {
           "Ref": "ApiGatewayRestApi"
@@ -533,7 +533,7 @@
         "LoginServiceLambdaPermissionApiGateway"
       ]
     },
-    "ApiGatewayDeployment1735318734674": {
+    "ApiGatewayDeployment1735937917283": {
       "Type": "AWS::ApiGateway::Deployment",
       "Properties": {
         "RestApiId": {
@@ -544,10 +544,10 @@
       "DependsOn": [
         "ApiGatewayMethodApiHangarOptions",
         "ApiGatewayMethodApiUsersOptions",
-        "ApiGatewayMethodApiLoginOptions",
+        "ApiGatewayMethodApiTokenOptions",
         "ApiGatewayMethodApiHangarAny",
         "ApiGatewayMethodApiUsersAny",
-        "ApiGatewayMethodApiLoginAny"
+        "ApiGatewayMethodApiTokenAny"
       ]
     },
     "HangarServiceLambdaPermissionApiGateway": {
@@ -672,7 +672,7 @@
     "HangarServiceLambdaFunctionQualifiedArn": {
       "Description": "Current Lambda function version",
       "Value": {
-        "Ref": "HangarServiceLambdaVersioniuE51CT9TymoRqAZ7Oj9aR8506eqUqNffcMmWGA6A"
+        "Ref": "HangarServiceLambdaVersionE8uxWRvCFdF2PmoCKLO8YB4nr9HvdwwffuyIYVxg"
       },
       "Export": {
         "Name": "sls-api-dev-HangarServiceLambdaFunctionQualifiedArn"
@@ -681,7 +681,7 @@
     "UserServiceLambdaFunctionQualifiedArn": {
       "Description": "Current Lambda function version",
       "Value": {
-        "Ref": "UserServiceLambdaVersionBrs7hlFX61t8oX4FRfbvgNgbfid2YnGECwENG7mgGVY"
+        "Ref": "UserServiceLambdaVersion8fIIEKS3lGDXzqaERdb7Lnjj7oJjz8RjvAPv8VR3rP8"
       },
       "Export": {
         "Name": "sls-api-dev-UserServiceLambdaFunctionQualifiedArn"
@@ -690,7 +690,7 @@
     "LoginServiceLambdaFunctionQualifiedArn": {
       "Description": "Current Lambda function version",
       "Value": {
-        "Ref": "LoginServiceLambdaVersionofTDVi6fXJihgDMSpcZAUdNOoYPdDXS8AgBIOSpr19Y"
+        "Ref": "LoginServiceLambdaVersionl5oNTBHewzodzztA4XO96Abf4bfHLDa8B3PUVjEF8Y"
       },
       "Export": {
         "Name": "sls-api-dev-LoginServiceLambdaFunctionQualifiedArn"

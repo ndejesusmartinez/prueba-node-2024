@@ -27,7 +27,7 @@ functions:
     handler: server.handler   # Este es el archivo que Lambda invoca
     events:
       - http:
-          path: api/login   # Ruta para el servicio de hangares
+          path: api/token   # Ruta para el servicio de hangares
           method: any                   # Permite cualquier método (POST, GET, etc.)
           cors: true
 
