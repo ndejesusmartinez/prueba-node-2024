@@ -2,7 +2,7 @@ import { Schema, model } from 'mongoose';
 import bcrypt from 'bcryptjs';
 
 const userSchema = new Schema({
-  nombre: {
+  userName: {
     type: String,
     required: true,
     minlength: 3
@@ -12,7 +12,7 @@ const userSchema = new Schema({
     required: true,
     unique: true
   },
-  contraseña: {
+  password: {
     type: String,
     required: true,
     minlength: 6
@@ -20,17 +20,17 @@ const userSchema = new Schema({
 });
 
 userSchema.pre('save', async function (next) {
-  if (!this.isModified('contraseña')) {
+  if (!this.isModified('password')) {
     return next();
   }
 
   const salt = await bcrypt.genSalt(10); 
-  this.contraseña = await bcrypt.hash(this.contraseña, salt); 
+  this.password = await bcrypt.hash(this.password, salt); 
   next();
 });
 
 userSchema.methods.matchPassword = async function (enteredPassword) {
-  return await bcrypt.compare(enteredPassword, this.contraseña);
+  return await bcrypt.compare(enteredPassword, this.password);
 };
 
 

@@ -2,7 +2,7 @@ import User from "../../models/user/userModel.js"
 
 export const getAllUsers = async () => {
   try {
-    return await User.find()
+    return await User.find().select('-password').select('-__v')
   } catch (error) {
     console.log(error);
 
@@ -15,13 +15,13 @@ export const getAllUsers = async () => {
 
 export const createUser = async (req, res) => {
   try {
-    const { nombre, email, contraseña } = req.body
-    if (!nombre || !email || !contraseña) {
+    const { userName, email, password } = req.body
+    if (!userName || !email || !password) {
       return {
         message: "Todos los campos son requeridos"
       };
     }
-    const nuevoUsuario = new User({ nombre, email, contraseña })
+    const nuevoUsuario = new User({ userName, email, password })
     await nuevoUsuario.save()
 
     return {

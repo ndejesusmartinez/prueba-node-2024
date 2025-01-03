@@ -22,7 +22,9 @@
     "jsonwebtoken": "^9.0.2",
     "mongoose": "^8.9.1",
     "mysql2": "^3.11.5",
-    "sequelize": "^6.37.5"
+    "sequelize": "^6.37.5",
+    "swagger-jsdoc": "^6.2.8",
+    "swagger-ui-express": "^5.0.1"
   },
   "devDependencies": {
     "serverless-offline": "^14.4.0"

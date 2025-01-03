@@ -11,8 +11,7 @@ export const loginService = async (req) => {
       return {errorData: error.details[0].message}
     }
     
-    const { email, contraseña } = req.body
-
+    const { email, password } = req.body    
     try {
       const user = await User.findOne({ email })
 
@@ -20,7 +19,7 @@ export const loginService = async (req) => {
         return { errorData: "Credenciales inválidas" }
       }
 
-      const isMatch = await user.matchPassword(contraseña)
+      const isMatch = await user.matchPassword(password)
       if (!isMatch) {
         return { errorData: "Credenciales inválidas" }
       }
