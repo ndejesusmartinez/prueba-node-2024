@@ -61,7 +61,7 @@
  * @swagger
  * components:
  *   schemas:
- *     login:
+ *     token:
  *       type: object
  *       required:
  *         - id
@@ -86,7 +86,7 @@
  * @swagger
  * components:
  *   schemas:
- *     loginError:
+ *     tokenError:
  *       type: object
  *       required:
  *         - id
@@ -120,7 +120,7 @@
  * @swagger
  * components:
  *   schemas:
- *     loginSuccess:
+ *     tokenSuccess:
  *       type: object
  *       example:
  *         message: "Autenticación exitosa"
@@ -183,7 +183,7 @@
 
 /**
  * @swagger
- * /api/login:
+ * /api/token:
  *   post:
  *     summary: Obtiene el token de acceso
  *     tags: [Token de acceso]
@@ -192,20 +192,20 @@
  *      content:
  *         application/json:
  *           schema:
- *             $ref: '#/components/schemas/login'
+ *             $ref: '#/components/schemas/token'
  *     responses:
  *       200:
  *         description: retorno de token de acceso
  *         content:
  *           application/json:
  *             schema:
- *               $ref: '#/components/schemas/loginSuccess'
+ *               $ref: '#/components/schemas/tokenSuccess'
  *       403:
  *         description: Error en las credenciales
  *         content:
  *           application/json:
  *             schema:
- *               $ref: '#/components/schemas/loginError'
+ *               $ref: '#/components/schemas/tokenError'
  *       500:
  *         description: Error interno del servidor
  *         content:

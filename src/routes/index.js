@@ -8,6 +8,6 @@ const indexRouter = express.Router()
 
 indexRouter.use('/hangar', verifyToken, hangarRouter)
 indexRouter.use('/users', userRouter)
-indexRouter.use('/login', loginRouter)
+indexRouter.use('/token', loginRouter)
 
 export default indexRouter
