@@ -39,7 +39,7 @@ export const loginService = async (req) => {
     }
   } catch (error) {
     return {
-      message: error.message,
+      error: error.message,
     }
   }
 }

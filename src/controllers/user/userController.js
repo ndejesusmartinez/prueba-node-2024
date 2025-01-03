@@ -17,7 +17,12 @@ import {
     static async create(req, res) {
       try {
         const data = await createUser(req, res);
-        res.status(200).json(data);
+
+        if(data.error){
+          return res.status(400).json(data)
+        }else{
+          return res.status(200).json(data)
+        }
       } catch (error) {
         res.status(500).json("error");
       }

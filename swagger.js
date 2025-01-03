@@ -14,6 +14,20 @@ export const options = {
         description: 'Servidor local',
       },
     ],
+    components: {
+      securitySchemes: {
+        BearerAuth: {
+          type: "apiKey",
+          in: "header",
+          name: "Authorization",
+        },
+      },
+    },
+    security: [
+      {
+        BearerAuth: [],
+      },
+    ],
   },
   apis: ['./src/routes/doc.js'],
 };

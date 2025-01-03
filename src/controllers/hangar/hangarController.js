@@ -8,9 +8,17 @@ export class hangarController {
   static async get(req, res) {
     try {
       const data = await getAllHangar()
-      res.status(200).json(data)
-    } catch (error) {      
-      res.status(500).json(error)
+
+      if(data.error){
+        return res.status(500).json(data)
+      }else{
+        return res.status(200).json(data)
+      }
+
+    } catch (error) {
+      return res.status(500).json({
+        error: "Error en el servidor"
+      })
     }
   }
 

@@ -3,7 +3,13 @@ import { hangarSchema } from '../../Dto/hangar/hangarDto.js'
 
 
 export const getAllHangar = async() =>{
-    return await hangar.find()
+    try {
+        return await hangar.find()
+    } catch (error) {
+        return {
+            error: "Error en el servidor"
+        }
+    }
 }
 
 export const createHangar = async(req) =>{

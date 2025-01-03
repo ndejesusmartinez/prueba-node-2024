@@ -18,7 +18,7 @@ export const createUser = async (req, res) => {
     const { userName, email, password } = req.body
     if (!userName || !email || !password) {
       return {
-        message: "Todos los campos son requeridos"
+        error: "Todos los campos son requeridos"
       };
     }
     const nuevoUsuario = new User({ userName, email, password })
