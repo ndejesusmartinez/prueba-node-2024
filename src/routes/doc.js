@@ -314,4 +314,10 @@
  *           application/json:
  *             schema:
  *               $ref: '#/components/schemas/error'
+ *       409:
+ *         description: Dato duplicado
+ *         content:
+ *           application/json:
+ *             schema:
+ *               $ref: '#/components/schemas/error'
  */

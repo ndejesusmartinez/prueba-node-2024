@@ -20,11 +20,22 @@ export const createHangar = async(req) =>{
         if(error){
             return {
                 error: error.details[0].message, 
-                status:"failed"
+                status:"failed",
+                statusCode: 400
             }
         }
 
         const { IdHangar, NombreHangar, Encargado, TelefonoEncargado, TipoHangar, Ciudad, DireccionAeropuerto, AreaHangar } = req.body        
+
+        const existingHangar = await hangar.findOne({ IdHangar });
+
+        if (existingHangar) {
+            return {
+                message: `El campo 'IdHangar' con valor '${IdHangar}' ya está registrado.`,
+                status: "Aqqui",
+                statusCode: 409, 
+            };
+        }
         const response = new hangar({ IdHangar, NombreHangar, Encargado, TelefonoEncargado, TipoHangar, Ciudad, DireccionAeropuerto, AreaHangar })
         
         await response.save()
@@ -35,8 +46,9 @@ export const createHangar = async(req) =>{
         
     } catch (error) {           
         return {
-            errorResponse: error,
-            status:"failed"
+            error: error,
+            status:"failed",
+            statusCode: 500
         }
     }
 

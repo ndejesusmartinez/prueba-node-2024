@@ -26,10 +26,12 @@ export class hangarController {
     try {
       const data = await createHangar(req)
       
-      if(data.error){
+      if(data.statusCode == 400){
         res.status(400).json(data)
-      }else if(data.errorResponse){
+      }else if(data.statusCode == 500){
         res.status(500).json(data)
+      }else if(data.statusCode == 409){
+        res.status(409).json(data)
       }else{        
         res.status(201).json(data)
       }

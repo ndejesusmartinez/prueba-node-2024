@@ -8,26 +8,32 @@ const hangarSchema = new Schema({
     },
     NombreHangar: {
         type: String,
-        unique: true,
+        unique: false,
         trim: true,
     },
     Encargado: {
         type: String,
+        unique: false,
     },
     TelefonoEncargado: {
         type: String,
+        unique: false,
     },
     TipoHangar: {
         type: String,
+        unique: false,
     },
     Ciudad: {
         type: String,
+        unique: false,
     },
     DireccionAeropuerto: {
         type: String,
+        unique: false,
     },
     AreaHangar: {
         type: String,
+        unique: false,
     },
 });
 
