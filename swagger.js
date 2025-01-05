@@ -4,9 +4,9 @@ export const options = {
   definition: {
     openapi: '3.0.0',
     info: {
-      title: 'Documentación de API',
+      title: 'Documentation',
       version: '1.0.0',
-      description: 'Documentación detallada de la API con ejemplos para cada endpoint',
+      description: 'Detailed API documentation with examples for each endpoint',
     },
     servers: [
       {
@@ -33,3 +33,33 @@ export const options = {
 };
 
 export const specs = swaggerJsdoc(options);
+
+export const handler = async (event) => {
+  const htmlTemplate = `
+    <!DOCTYPE html>
+    <html>
+    <head>
+      <title>API Documentation</title>
+      <link rel="stylesheet" href="https://unpkg.com/swagger-ui-dist/swagger-ui.css" />
+    </head>
+    <body>
+      <div id="swagger-ui"></div>
+      <script src="https://unpkg.com/swagger-ui-dist/swagger-ui-bundle.js"></script>
+      <script>
+        const ui = SwaggerUIBundle({
+          spec: ${JSON.stringify(specs)},
+          dom_id: '#swagger-ui',
+        });
+      </script>
+    </body>
+    </html>
+  `;
+
+  return {
+    statusCode: 200,
+    headers: {
+      'Content-Type': 'text/html',
+    },
+    body: htmlTemplate,
+  };
+};

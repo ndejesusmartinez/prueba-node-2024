@@ -32,6 +32,12 @@
               "LogGroupName": "/aws/lambda/api-dev-loginService"
             }
           },
+          "SwaggerDocServiceLogGroup": {
+            "Type": "AWS::Logs::LogGroup",
+            "Properties": {
+              "LogGroupName": "/aws/lambda/api-dev-swaggerDocService"
+            }
+          },
           "IamRoleLambdaExecution": {
             "Type": "AWS::IAM::Role",
             "Properties": {
@@ -115,7 +121,7 @@
             "Properties": {
               "Code": {
                 "S3Bucket": "serverless-framework-deployments-us-east-1-1edfa506-0631",
-                "S3Key": "serverless/api/dev/1735937925896-2025-01-03T20:58:45.896Z/api.zip"
+                "S3Key": "serverless/api/dev/1736036805925-2025-01-05T00:26:45.925Z/api.zip"
               },
               "Handler": "server.handler",
               "Runtime": "nodejs16.x",
@@ -138,7 +144,7 @@
             "Properties": {
               "Code": {
                 "S3Bucket": "serverless-framework-deployments-us-east-1-1edfa506-0631",
-                "S3Key": "serverless/api/dev/1735937925896-2025-01-03T20:58:45.896Z/api.zip"
+                "S3Key": "serverless/api/dev/1736036805925-2025-01-05T00:26:45.925Z/api.zip"
               },
               "Handler": "server.handler",
               "Runtime": "nodejs16.x",
@@ -161,7 +167,7 @@
             "Properties": {
               "Code": {
                 "S3Bucket": "serverless-framework-deployments-us-east-1-1edfa506-0631",
-                "S3Key": "serverless/api/dev/1735937925896-2025-01-03T20:58:45.896Z/api.zip"
+                "S3Key": "serverless/api/dev/1736036805925-2025-01-05T00:26:45.925Z/api.zip"
               },
               "Handler": "server.handler",
               "Runtime": "nodejs16.x",
@@ -179,34 +185,67 @@
               "LoginServiceLogGroup"
             ]
           },
-          "HangarServiceLambdaVersionE8uxWRvCFdF2PmoCKLO8YB4nr9HvdwwffuyIYVxg": {
+          "SwaggerDocServiceLambdaFunction": {
+            "Type": "AWS::Lambda::Function",
+            "Properties": {
+              "Code": {
+                "S3Bucket": "serverless-framework-deployments-us-east-1-1edfa506-0631",
+                "S3Key": "serverless/api/dev/1736036805925-2025-01-05T00:26:45.925Z/api.zip"
+              },
+              "Handler": "swagger.handler",
+              "Runtime": "nodejs16.x",
+              "FunctionName": "api-dev-swaggerDocService",
+              "MemorySize": 1024,
+              "Timeout": 6,
+              "Role": {
+                "Fn::GetAtt": [
+                  "IamRoleLambdaExecution",
+                  "Arn"
+                ]
+              }
+            },
+            "DependsOn": [
+              "SwaggerDocServiceLogGroup"
+            ]
+          },
+          "HangarServiceLambdaVersion6sGRJWvth8WWz3GzhSc0YmP01YP90Kq5i6jC47FozA": {
             "Type": "AWS::Lambda::Version",
             "DeletionPolicy": "Retain",
             "Properties": {
               "FunctionName": {
                 "Ref": "HangarServiceLambdaFunction"
               },
-              "CodeSha256": "tI42UblACj1X/DgY3HpTan3LzJiziWRwHdxopJTl2Kc="
+              "CodeSha256": "Qjp3h6JLqViVIKJKuw00lqdqGe8Ho+jV3EKcbNII3qo="
             }
           },
-          "UserServiceLambdaVersion8fIIEKS3lGDXzqaERdb7Lnjj7oJjz8RjvAPv8VR3rP8": {
+          "UserServiceLambdaVersionvE9GrO6RO6Hf1wqHdLz9waAsbRPsLIoSYoPFKZKJqI": {
             "Type": "AWS::Lambda::Version",
             "DeletionPolicy": "Retain",
             "Properties": {
               "FunctionName": {
                 "Ref": "UserServiceLambdaFunction"
               },
-              "CodeSha256": "tI42UblACj1X/DgY3HpTan3LzJiziWRwHdxopJTl2Kc="
+              "CodeSha256": "Qjp3h6JLqViVIKJKuw00lqdqGe8Ho+jV3EKcbNII3qo="
             }
           },
-          "LoginServiceLambdaVersionl5oNTBHewzodzztA4XO96Abf4bfHLDa8B3PUVjEF8Y": {
+          "LoginServiceLambdaVersionD8DhzAHfhSwTF8Z8lp1TmI0qk7jykiPT3dtQLjCXp0": {
             "Type": "AWS::Lambda::Version",
             "DeletionPolicy": "Retain",
             "Properties": {
               "FunctionName": {
                 "Ref": "LoginServiceLambdaFunction"
               },
-              "CodeSha256": "tI42UblACj1X/DgY3HpTan3LzJiziWRwHdxopJTl2Kc="
+              "CodeSha256": "Qjp3h6JLqViVIKJKuw00lqdqGe8Ho+jV3EKcbNII3qo="
+            }
+          },
+          "SwaggerDocServiceLambdaVersionb8SkQQS77zPIW2OIZAdxkj97cFIKnM3otTcklmImYU": {
+            "Type": "AWS::Lambda::Version",
+            "DeletionPolicy": "Retain",
+            "Properties": {
+              "FunctionName": {
+                "Ref": "SwaggerDocServiceLambdaFunction"
+              },
+              "CodeSha256": "Qjp3h6JLqViVIKJKuw00lqdqGe8Ho+jV3EKcbNII3qo="
             }
           },
           "ApiGatewayRestApi": {
@@ -267,6 +306,18 @@
                 "Ref": "ApiGatewayResourceApi"
               },
               "PathPart": "token",
+              "RestApiId": {
+                "Ref": "ApiGatewayRestApi"
+              }
+            }
+          },
+          "ApiGatewayResourceApiDocs": {
+            "Type": "AWS::ApiGateway::Resource",
+            "Properties": {
+              "ParentId": {
+                "Ref": "ApiGatewayResourceApi"
+              },
+              "PathPart": "docs",
               "RestApiId": {
                 "Ref": "ApiGatewayRestApi"
               }
@@ -401,6 +452,51 @@
               },
               "ResourceId": {
                 "Ref": "ApiGatewayResourceApiToken"
+              },
+              "RestApiId": {
+                "Ref": "ApiGatewayRestApi"
+              }
+            }
+          },
+          "ApiGatewayMethodApiDocsOptions": {
+            "Type": "AWS::ApiGateway::Method",
+            "Properties": {
+              "AuthorizationType": "NONE",
+              "HttpMethod": "OPTIONS",
+              "MethodResponses": [
+                {
+                  "StatusCode": "200",
+                  "ResponseParameters": {
+                    "method.response.header.Access-Control-Allow-Origin": true,
+                    "method.response.header.Access-Control-Allow-Headers": true,
+                    "method.response.header.Access-Control-Allow-Methods": true
+                  },
+                  "ResponseModels": {}
+                }
+              ],
+              "RequestParameters": {},
+              "Integration": {
+                "Type": "MOCK",
+                "RequestTemplates": {
+                  "application/json": "{statusCode:200}"
+                },
+                "ContentHandling": "CONVERT_TO_TEXT",
+                "IntegrationResponses": [
+                  {
+                    "StatusCode": "200",
+                    "ResponseParameters": {
+                      "method.response.header.Access-Control-Allow-Origin": "'*'",
+                      "method.response.header.Access-Control-Allow-Headers": "'Content-Type,X-Amz-Date,Authorization,X-Api-Key,X-Amz-Security-Token,X-Amz-User-Agent,X-Amzn-Trace-Id'",
+                      "method.response.header.Access-Control-Allow-Methods": "'OPTIONS,GET'"
+                    },
+                    "ResponseTemplates": {
+                      "application/json": ""
+                    }
+                  }
+                ]
+              },
+              "ResourceId": {
+                "Ref": "ApiGatewayResourceApiDocs"
               },
               "RestApiId": {
                 "Ref": "ApiGatewayRestApi"
@@ -545,7 +641,53 @@
               "LoginServiceLambdaPermissionApiGateway"
             ]
           },
-          "ApiGatewayDeployment1735937917283": {
+          "ApiGatewayMethodApiDocsGet": {
+            "Type": "AWS::ApiGateway::Method",
+            "Properties": {
+              "HttpMethod": "GET",
+              "RequestParameters": {},
+              "ResourceId": {
+                "Ref": "ApiGatewayResourceApiDocs"
+              },
+              "RestApiId": {
+                "Ref": "ApiGatewayRestApi"
+              },
+              "ApiKeyRequired": false,
+              "AuthorizationType": "NONE",
+              "Integration": {
+                "IntegrationHttpMethod": "POST",
+                "Type": "AWS_PROXY",
+                "Uri": {
+                  "Fn::Join": [
+                    "",
+                    [
+                      "arn:",
+                      {
+                        "Ref": "AWS::Partition"
+                      },
+                      ":apigateway:",
+                      {
+                        "Ref": "AWS::Region"
+                      },
+                      ":lambda:path/2015-03-31/functions/",
+                      {
+                        "Fn::GetAtt": [
+                          "SwaggerDocServiceLambdaFunction",
+                          "Arn"
+                        ]
+                      },
+                      "/invocations"
+                    ]
+                  ]
+                }
+              },
+              "MethodResponses": []
+            },
+            "DependsOn": [
+              "SwaggerDocServiceLambdaPermissionApiGateway"
+            ]
+          },
+          "ApiGatewayDeployment1736036796997": {
             "Type": "AWS::ApiGateway::Deployment",
             "Properties": {
               "RestApiId": {
@@ -557,9 +699,11 @@
               "ApiGatewayMethodApiHangarOptions",
               "ApiGatewayMethodApiUsersOptions",
               "ApiGatewayMethodApiTokenOptions",
+              "ApiGatewayMethodApiDocsOptions",
               "ApiGatewayMethodApiHangarAny",
               "ApiGatewayMethodApiUsersAny",
-              "ApiGatewayMethodApiTokenAny"
+              "ApiGatewayMethodApiTokenAny",
+              "ApiGatewayMethodApiDocsGet"
             ]
           },
           "HangarServiceLambdaPermissionApiGateway": {
@@ -672,6 +816,43 @@
                 ]
               }
             }
+          },
+          "SwaggerDocServiceLambdaPermissionApiGateway": {
+            "Type": "AWS::Lambda::Permission",
+            "Properties": {
+              "FunctionName": {
+                "Fn::GetAtt": [
+                  "SwaggerDocServiceLambdaFunction",
+                  "Arn"
+                ]
+              },
+              "Action": "lambda:InvokeFunction",
+              "Principal": "apigateway.amazonaws.com",
+              "SourceArn": {
+                "Fn::Join": [
+                  "",
+                  [
+                    "arn:",
+                    {
+                      "Ref": "AWS::Partition"
+                    },
+                    ":execute-api:",
+                    {
+                      "Ref": "AWS::Region"
+                    },
+                    ":",
+                    {
+                      "Ref": "AWS::AccountId"
+                    },
+                    ":",
+                    {
+                      "Ref": "ApiGatewayRestApi"
+                    },
+                    "/*/*"
+                  ]
+                ]
+              }
+            }
           }
         },
         "Outputs": {
@@ -684,7 +865,7 @@
           "HangarServiceLambdaFunctionQualifiedArn": {
             "Description": "Current Lambda function version",
             "Value": {
-              "Ref": "HangarServiceLambdaVersionE8uxWRvCFdF2PmoCKLO8YB4nr9HvdwwffuyIYVxg"
+              "Ref": "HangarServiceLambdaVersion6sGRJWvth8WWz3GzhSc0YmP01YP90Kq5i6jC47FozA"
             },
             "Export": {
               "Name": "sls-api-dev-HangarServiceLambdaFunctionQualifiedArn"
@@ -693,7 +874,7 @@
           "UserServiceLambdaFunctionQualifiedArn": {
             "Description": "Current Lambda function version",
             "Value": {
-              "Ref": "UserServiceLambdaVersion8fIIEKS3lGDXzqaERdb7Lnjj7oJjz8RjvAPv8VR3rP8"
+              "Ref": "UserServiceLambdaVersionvE9GrO6RO6Hf1wqHdLz9waAsbRPsLIoSYoPFKZKJqI"
             },
             "Export": {
               "Name": "sls-api-dev-UserServiceLambdaFunctionQualifiedArn"
@@ -702,10 +883,19 @@
           "LoginServiceLambdaFunctionQualifiedArn": {
             "Description": "Current Lambda function version",
             "Value": {
-              "Ref": "LoginServiceLambdaVersionl5oNTBHewzodzztA4XO96Abf4bfHLDa8B3PUVjEF8Y"
+              "Ref": "LoginServiceLambdaVersionD8DhzAHfhSwTF8Z8lp1TmI0qk7jykiPT3dtQLjCXp0"
             },
             "Export": {
               "Name": "sls-api-dev-LoginServiceLambdaFunctionQualifiedArn"
+            }
+          },
+          "SwaggerDocServiceLambdaFunctionQualifiedArn": {
+            "Description": "Current Lambda function version",
+            "Value": {
+              "Ref": "SwaggerDocServiceLambdaVersionb8SkQQS77zPIW2OIZAdxkj97cFIKnM3otTcklmImYU"
+            },
+            "Export": {
+              "Name": "sls-api-dev-SwaggerDocServiceLambdaFunctionQualifiedArn"
             }
           },
           "ServiceEndpoint": {
@@ -777,7 +967,7 @@
         "timeout": 6,
         "runtime": "nodejs16.x",
         "vpc": {},
-        "versionLogicalId": "HangarServiceLambdaVersionE8uxWRvCFdF2PmoCKLO8YB4nr9HvdwwffuyIYVxg"
+        "versionLogicalId": "HangarServiceLambdaVersion6sGRJWvth8WWz3GzhSc0YmP01YP90Kq5i6jC47FozA"
       },
       "userService": {
         "handler": "server.handler",
@@ -813,7 +1003,7 @@
         "timeout": 6,
         "runtime": "nodejs16.x",
         "vpc": {},
-        "versionLogicalId": "UserServiceLambdaVersion8fIIEKS3lGDXzqaERdb7Lnjj7oJjz8RjvAPv8VR3rP8"
+        "versionLogicalId": "UserServiceLambdaVersionvE9GrO6RO6Hf1wqHdLz9waAsbRPsLIoSYoPFKZKJqI"
       },
       "loginService": {
         "handler": "server.handler",
@@ -849,7 +1039,43 @@
         "timeout": 6,
         "runtime": "nodejs16.x",
         "vpc": {},
-        "versionLogicalId": "LoginServiceLambdaVersionl5oNTBHewzodzztA4XO96Abf4bfHLDa8B3PUVjEF8Y"
+        "versionLogicalId": "LoginServiceLambdaVersionD8DhzAHfhSwTF8Z8lp1TmI0qk7jykiPT3dtQLjCXp0"
+      },
+      "swaggerDocService": {
+        "handler": "swagger.handler",
+        "events": [
+          {
+            "http": {
+              "path": "api/docs",
+              "method": "get",
+              "cors": {
+                "origin": "*",
+                "methods": [
+                  "OPTIONS",
+                  "GET"
+                ],
+                "headers": [
+                  "Content-Type",
+                  "X-Amz-Date",
+                  "Authorization",
+                  "X-Api-Key",
+                  "X-Amz-Security-Token",
+                  "X-Amz-User-Agent",
+                  "X-Amzn-Trace-Id"
+                ],
+                "allowCredentials": false
+              },
+              "integration": "AWS_PROXY"
+            }
+          }
+        ],
+        "name": "api-dev-swaggerDocService",
+        "package": {},
+        "memory": 1024,
+        "timeout": 6,
+        "runtime": "nodejs16.x",
+        "vpc": {},
+        "versionLogicalId": "SwaggerDocServiceLambdaVersionb8SkQQS77zPIW2OIZAdxkj97cFIKnM3otTcklmImYU"
       }
     },
     "configValidationMode": "warn",
@@ -872,7 +1098,7 @@
     "artifact": "C:\\laragon\\www\\prueba-node\\.serverless\\api.zip"
   },
   "package": {
-    "artifactDirectoryName": "serverless/api/dev/1735937925896-2025-01-03T20:58:45.896Z",
+    "artifactDirectoryName": "serverless/api/dev/1736036805925-2025-01-05T00:26:45.925Z",
     "artifact": "api.zip"
   }
 }

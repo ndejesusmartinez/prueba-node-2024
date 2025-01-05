@@ -16,3 +16,5 @@ yarn.lock
 # Directorios de construcción
 dist/
 build/
+
+.serverless/

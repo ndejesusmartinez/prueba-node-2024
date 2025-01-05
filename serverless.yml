@@ -31,5 +31,13 @@ functions:
           method: any                   # Permite cualquier método (POST, GET, etc.)
           cors: true
 
+  swaggerDocService:
+    handler: swagger.handler  # Archivo y función para servir Swagger
+    events:
+      - http:
+          path: api/docs       # Ruta para acceder a la documentación
+          method: get
+          cors: true           # Habilita CORS para el endpoint
+
 plugins:
   - serverless-offline  # Permite ejecutar el servicio localmente
