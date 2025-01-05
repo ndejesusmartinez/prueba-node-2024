@@ -252,6 +252,22 @@
  *           application/json:
  *             schema:
  *               $ref: '#/components/schemas/error'
+ *   get/{id}:
+ *     summary: Obtiene todos los usuarios
+ *     tags: [Users]
+ *     responses:
+ *       200:
+ *         description: Listado de usuarios
+ *         content:
+ *           application/json:
+ *             schema:
+ *               $ref: '#/components/schemas/User'
+ *       500:
+ *         description: Error interno del servidor
+ *         content:
+ *           application/json:
+ *             schema:
+ *               $ref: '#/components/schemas/error'
  */
 
 /**

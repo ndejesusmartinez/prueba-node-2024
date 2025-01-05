@@ -1,0 +1,569 @@
+{
+    "openapi": "3.0.0",
+    "info": {
+        "title": "Documentation",
+        "version": "1.0.0",
+        "description": "Detailed API documentation with examples for each endpoint"
+    },
+    "servers": [
+        {
+            "url": "https://cdizdolpz4.execute-api.us-east-1.amazonaws.com/dev",
+            "description": "Servidor"
+        }
+    ],
+    "components": {
+        "securitySchemes": {
+            "BearerAuth": {
+                "type": "apiKey",
+                "in": "header",
+                "name": "Authorization"
+            }
+        },
+        "schemas": {
+            "User": {
+                "type": "object",
+                "required": [
+                    "id",
+                    "name",
+                    "email"
+                ],
+                "properties": {
+                    "id": {
+                        "type": "integer",
+                        "description": "ID único del usuario"
+                    },
+                    "userName": {
+                        "type": "string",
+                        "description": "Nombre del usuario"
+                    },
+                    "email": {
+                        "type": "string",
+                        "description": "Correo electrónico del usuario"
+                    }
+                },
+                "example": {
+                    "_id": 1,
+                    "userName": "admin",
+                    "email": "admin@admin.com"
+                }
+            },
+            "hangar": {
+                "type": "object",
+                "properties": {
+                    "IdHangar": {
+                        "type": "string"
+                    },
+                    "NombreHangar": {
+                        "type": "string"
+                    },
+                    "Encargado": {
+                        "type": "string"
+                    },
+                    "TelefonoEncargado": {
+                        "type": "string"
+                    },
+                    "TipoHangar": {
+                        "type": "string"
+                    },
+                    "Ciudad": {
+                        "type": "string"
+                    },
+                    "DireccionAeropuerto": {
+                        "type": "string"
+                    },
+                    "AreaHangar": {
+                        "type": "string"
+                    }
+                },
+                "example": {
+                    "IdHangar": "123456790",
+                    "NombreHangar": "medellin-2",
+                    "Encargado": "naren martinez2",
+                    "TelefonoEncargado": "3172133383",
+                    "TipoHangar": "privado",
+                    "Ciudad": "Medellin",
+                    "DireccionAeropuerto": "aeropuerto medellin",
+                    "AreaHangar": "51"
+                }
+            },
+            "token": {
+                "type": "object",
+                "properties": {
+                    "email": {
+                        "type": "string"
+                    },
+                    "password": {
+                        "type": "string"
+                    }
+                },
+                "example": {
+                    "email": "bejucapainternet@hotmail.com",
+                    "password": "123456789"
+                }
+            },
+            "tokenError": {
+                "type": "object",
+                "properties": {
+                    "errorData": {
+                        "type": "string"
+                    }
+                },
+                "example": {
+                    "errorData": "Credenciales inválidas"
+                }
+            },
+            "tokenSuccess": {
+                "type": "object",
+                "properties": {
+                    "message": {
+                        "type": "string"
+                    },
+                    "token": {
+                        "type": "string"
+                    }
+                },
+                "example": {
+                    "message": "Autenticación exitosa",
+                    "token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9"
+                }
+            },
+            "error": {
+                "type": "object",
+                "example": {
+                    "error": "Mensaje de error"
+                }
+            },
+            "emptyToken": {
+                "type": "object",
+                "example": {
+                    "error": "Token no suministrado en los headers, favor validar!"
+                }
+            },
+            "hangarCreated": {
+                "type": "object",
+                "example": {
+                    "status": "success"
+                }
+            }
+        }
+    },
+    "security": [
+        {
+        "BearerAuth": []
+        }
+    ],
+    "paths": {
+        "/api/token": {
+            "post": {
+                "summary": "Obtiene el token de acceso",
+                "tags": [
+                    "Token de acceso"
+                ],
+                "requestBody": {
+                    "required": true,
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "$ref": "#/components/schemas/token"
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "200": {
+                        "description": "Retorno de token de acceso",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/tokenSuccess"
+                                }
+                            }
+                        }
+                    },
+                    "403": {
+                        "description": "Error en las credenciales",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/tokenError"
+                                }
+                            }
+                        }
+                    },
+                    "500":{
+                        "description": "Error interno del servidor",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/error"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/api/users": {
+            "get": {
+                "summary": "Obtiene todos los usuarios",
+                "tags": [
+                    "Users"
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Listado de usuarios",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/User"
+                                }
+                            }
+                        }
+                    },
+                    "500":{
+                        "description": "Error interno del servidor",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/error"
+                                }
+                            }
+                        }
+                    },
+                    "403":{
+                        "description": "Token no suministrado / no autorizado",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/emptyToken"
+                                }
+                            }
+                        }
+                    },
+                    "401":{
+                        "description": "Token incorrecto",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/error"
+                                }
+                            }
+                        }
+                    }
+                }
+            },
+            "post": {
+                "summary": "Obtiene todos los usuarios",
+                "tags": [
+                    "Users"
+                ],
+                "responses": {
+                    "201": {
+                        "description": "Creacion de usuario",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/User"
+                                }
+                            }
+                        }
+                    },
+                    "403":{
+                        "description": "Token no suministrado / no autorizado",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/error"
+                                }
+                            }
+                        }
+                    },
+                    "400":{
+                        "description": "Error en la data suministrada a la API",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/error"
+                                }
+                            }
+                        }
+                    },
+                    "401":{
+                        "description": "Token incorrecto",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/error"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/api/users/{id}": {
+            "get": {
+                "summary": "Obtiene la data de un usuario especifico",
+                "tags": [
+                    "Users"
+                ],
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "description": "Id de usuario",
+                        "required": true
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Listado de usuarios",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/User"
+                                }
+                            }
+                        }
+                    },
+                    "500":{
+                        "description": "Error interno del servidor",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/error"
+                                }
+                            }
+                        }
+                    },
+                    "403":{
+                        "description": "Token no suministrado / no autorizado",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/emptyToken"
+                                }
+                            }
+                        }
+                    },
+                    "401":{
+                        "description": "Token incorrecto",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/error"
+                                }
+                            }
+                        }
+                    },
+                    "400":{
+                        "description": "usuario no encontrado",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/error"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/api/hangar": {
+            "get": {
+                "summary": "Obtiene la lista de todos los hangares almacenados en DB",
+                "tags": [
+                    "hangar"
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Listado de usuarios",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/hangar"
+                                }
+                            }
+                        }
+                    },
+                    "403":{
+                        "description": "Token no suministrado / no autorizado",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/emptyToken"
+                                }
+                            }
+                        }
+                    },
+                    "401":{
+                        "description": "Token incorrecto",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/error"
+                                }
+                            }
+                        }
+                    },
+                    "500":{
+                        "description": "Error interno del servidor",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/error"
+                                }
+                            }
+                        }
+                    }
+                }
+            },
+            "post": {
+                "summary": "Crear un nuevo hangar en la DB",
+                "tags": [
+                    "hangar"
+                ],
+                "responses": {
+                    "201": {
+                        "description": "Creacion de usuario",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/hangarCreated"
+                                }
+                            }
+                        }
+                    },
+                    "500":{
+                        "description": "Error interno del servidor",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/error"
+                                }
+                            }
+                        }
+                    },
+                    "409":{
+                        "description": "Dato duplicado",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/error"
+                                }
+                            }
+                        }
+                    },
+                    "400":{
+                        "description": "Error en la data suministrada a la API",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/error"
+                                }
+                            }
+                        }
+                    },
+                    "403":{
+                        "description": "Token no suministrado / no autorizado",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/emptyToken"
+                                }
+                            }
+                        }
+                    },
+                    "401":{
+                        "description": "Token incorrecto",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/error"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/api/hangar/{id}": {
+            "get": {
+                "summary": "Obtiene la data de un hangar especifico",
+                "tags": [
+                    "hangar"
+                ],
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "description": "Id de hangar",
+                        "required": true
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "data del hangar",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/hangar"
+                                }
+                            }
+                        }
+                    },
+                    "500":{
+                        "description": "Error interno del servidor",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/error"
+                                }
+                            }
+                        }
+                    },
+                    "403":{
+                        "description": "Token no suministrado / no autorizado",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/emptyToken"
+                                }
+                            }
+                        }
+                    },
+                    "401":{
+                        "description": "Token incorrecto",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/error"
+                                }
+                            }
+                        }
+                    },
+                    "400":{
+                        "description": "datos invalidos",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/error"
+                                }
+                            }
+                        }
+                    },
+                    "404":{
+                        "description": "hangar no encontrado",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/error"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    }
+}

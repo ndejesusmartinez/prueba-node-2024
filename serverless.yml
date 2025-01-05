@@ -14,6 +14,10 @@ functions:
           path: api/hangar
           method: any
           cors: true
+      - http:
+          path: api/hangar/{id}
+          method: get
+          cors: true
 
   userService:
     handler: server.handler
@@ -21,6 +25,10 @@ functions:
       - http:
           path: api/users
           method: any
+          cors: true
+      - http:
+          path: api/users/{id}
+          method: get
           cors: true
 
   loginService:
