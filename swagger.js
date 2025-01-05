@@ -11,7 +11,7 @@ export const options = {
     servers: [
       {
         url: 'https://cdizdolpz4.execute-api.us-east-1.amazonaws.com/dev',
-        description: 'Servidor local',
+        description: 'Servidor',
       },
     ],
     components: {

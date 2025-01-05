@@ -32,7 +32,7 @@ export const createHangar = async(req) =>{
         if (existingHangar) {
             return {
                 message: `El campo 'IdHangar' con valor '${IdHangar}' ya está registrado.`,
-                status: "Aqqui",
+                status: "failed",
                 statusCode: 409, 
             };
         }

@@ -8,36 +8,36 @@ provider:
 
 functions:
   hangarService:
-    handler: server.handler   # Este es el archivo que Lambda invoca
+    handler: server.handler
     events:
       - http:
-          path: api/hangar   # Ruta para el servicio de hangares
-          method: any                   # Permite cualquier método (POST, GET, etc.)
+          path: api/hangar
+          method: any
           cors: true
 
   userService:
-    handler: server.handler   # Este es el archivo que Lambda invoca
+    handler: server.handler
     events:
       - http:
-          path: api/users   # Ruta para el servicio de hangares
-          method: any                   # Permite cualquier método (POST, GET, etc.)
+          path: api/users
+          method: any
           cors: true
 
   loginService:
-    handler: server.handler   # Este es el archivo que Lambda invoca
+    handler: server.handler
     events:
       - http:
-          path: api/token   # Ruta para el servicio de hangares
-          method: any                   # Permite cualquier método (POST, GET, etc.)
+          path: api/token
+          method: any
           cors: true
 
   swaggerDocService:
-    handler: swagger.handler  # Archivo y función para servir Swagger
+    handler: swagger.handler
     events:
       - http:
-          path: api/docs       # Ruta para acceder a la documentación
+          path: api/docs
           method: get
-          cors: true           # Habilita CORS para el endpoint
+          cors: true
 
 plugins:
-  - serverless-offline  # Permite ejecutar el servicio localmente
+  - serverless-offline

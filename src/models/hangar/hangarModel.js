@@ -1,4 +1,4 @@
-import { Schema, model } from 'mongoose';
+import { Schema, model } from 'mongoose'
 
 const hangarSchema = new Schema({
     IdHangar: {
@@ -35,8 +35,8 @@ const hangarSchema = new Schema({
         type: String,
         unique: false,
     },
-});
+})
 
-const Hangar = model('hangar', hangarSchema);
+const Hangar = model('hangar', hangarSchema)
 
-export default Hangar;
+export default Hangar
