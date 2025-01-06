@@ -4,8 +4,6 @@ import pkg from 'body-parser'
 import cors from "cors"
 import router from './src/routes/index.js'
 import connectDB from './config/database.js'
-import swaggerUi from 'swagger-ui-express' 
-import swaggerDocument from './swagger.json' assert { type: 'json' }
 
 const { json } = pkg
 const app = express()
@@ -14,7 +12,6 @@ app.use(cors())
 app.use(json())
 config()
 app.use("/api", router)
-app.use('/api/docs', swaggerUi.serve, swaggerUi.setup(swaggerDocument))
 const PORT = process.env.PORT || 5000
 
 app.listen(PORT, () => {

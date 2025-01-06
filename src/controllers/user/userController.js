@@ -18,10 +18,14 @@ export class userController {
     try {
       const data = await createUser(req, res)
 
-      if (data.error) {
+      if (data.error && data.statusCode == 409) {
+        return res.status(409).json(data)
+      } else if (data.error && data.statusCode == 500){
+        return res.status(500).json(data)
+      } else if (data.error && data.statusCode == 400){
         return res.status(400).json(data)
       } else {
-        return res.status(200).json(data)
+        return res.status(201).json(data)
       }
     } catch (error) {
       return res.status(500).json("error en el servidor")

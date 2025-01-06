@@ -1,0 +1,139 @@
+{
+  "stats": {
+    "suites": 2,
+    "tests": 2,
+    "passes": 2,
+    "pending": 0,
+    "failures": 0,
+    "start": "2025-01-05T19:55:03.009Z",
+    "end": "2025-01-05T19:55:06.317Z",
+    "duration": 3308,
+    "testsRegistered": 2,
+    "passPercent": 100,
+    "pendingPercent": 0,
+    "other": 0,
+    "hasOther": false,
+    "skipped": 0,
+    "hasSkipped": false
+  },
+  "results": [
+    {
+      "uuid": "93b5df3f-1410-43bc-b9d1-aa5cfaef3d26",
+      "title": "",
+      "fullFile": "",
+      "file": "",
+      "beforeHooks": [],
+      "afterHooks": [],
+      "tests": [],
+      "suites": [
+        {
+          "uuid": "072ba800-87dd-4da9-b618-9e4a06c12eb3",
+          "title": "Test listado de hangares",
+          "fullFile": "C:\\laragon\\www\\prueba-node\\src\\test\\hangar.test.js",
+          "file": "\\src\\test\\hangar.test.js",
+          "beforeHooks": [],
+          "afterHooks": [],
+          "tests": [
+            {
+              "title": "GET /api/hangar Listado de usuarios con token válido",
+              "fullTitle": "Test listado de hangares GET /api/hangar Listado de usuarios con token válido",
+              "timedOut": false,
+              "duration": 3299,
+              "state": "passed",
+              "speed": "slow",
+              "pass": true,
+              "fail": false,
+              "pending": false,
+              "context": null,
+              "code": "this.timeout(10000)\nconst token =\n  \"eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY3NzAzNWU2NjRiZDZjNmJiMGI5N2RjYyIsImVtYWlsIjoiYmVqdWNhcGFpbnRlcm5ldEBob3RtYWlsLmNvbSIsImlhdCI6MTczNjEwNDQ3OCwiZXhwIjoxNzM2MTA4MDc4fQ.IMeBEiq8w954EzroGy3NKZJ26B33ITYIfSW4PGtsCo4\"\nrequest(app)\n  .get(\"/api/hangar\")\n  .set(\"Authorization\", token)\n  .then((response) => {\n    expect(response.status).to.equal(200)\n    expect(response.body).to.be.an(\"array\")\n    done()\n  })\n  .catch((err) => done(err))",
+              "err": {},
+              "uuid": "ec3e5029-fda7-42e8-bb8a-65d5ce16e56a",
+              "parentUUID": "072ba800-87dd-4da9-b618-9e4a06c12eb3",
+              "isHook": false,
+              "skipped": false
+            }
+          ],
+          "suites": [],
+          "passes": [
+            "ec3e5029-fda7-42e8-bb8a-65d5ce16e56a"
+          ],
+          "failures": [],
+          "pending": [],
+          "skipped": [],
+          "duration": 3299,
+          "root": false,
+          "rootEmpty": false,
+          "_timeout": 2000
+        },
+        {
+          "uuid": "47fa432f-f5e7-42c4-97e1-d32a24cf4761",
+          "title": "Test listado de hangares",
+          "fullFile": "C:\\laragon\\www\\prueba-node\\src\\test\\hangar.test.js",
+          "file": "\\src\\test\\hangar.test.js",
+          "beforeHooks": [],
+          "afterHooks": [],
+          "tests": [
+            {
+              "title": "GET /api/hangar Listado de usuarios con token invalido",
+              "fullTitle": "Test listado de hangares GET /api/hangar Listado de usuarios con token invalido",
+              "timedOut": false,
+              "duration": 4,
+              "state": "passed",
+              "speed": "fast",
+              "pass": true,
+              "fail": false,
+              "pending": false,
+              "context": null,
+              "code": "this.timeout(10000)\nconst token =\n  \"eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY3NzAzNWU2NjRiZDZjNmJiMGI5N2RjYyIsImVtYWlsIjoiYmVqdWNhcGFpbnRlcm5ldEBob3RtYWlsLmNvbSIsImlhdCI6MTczNjEwNDQ3OCwiZXhwIjoxNzM2MTA4MDc4fQ.IMeBEiq8w954EzroGy3NKZJ26B33ITYIfSW4PGtsCo5\"\nrequest(app)\n  .get(\"/api/hangar\")\n  .set(\"Authorization\", token)\n  .then((response) => {\n    expect(response.status).to.equal(401)\n    expect(response.body).to.be.an(\"object\")\n    done()\n  })\n  .catch((err) => done(err))",
+              "err": {},
+              "uuid": "4b1a1eb8-0dd4-4a5d-94fd-8f35ef092e4f",
+              "parentUUID": "47fa432f-f5e7-42c4-97e1-d32a24cf4761",
+              "isHook": false,
+              "skipped": false
+            }
+          ],
+          "suites": [],
+          "passes": [
+            "4b1a1eb8-0dd4-4a5d-94fd-8f35ef092e4f"
+          ],
+          "failures": [],
+          "pending": [],
+          "skipped": [],
+          "duration": 4,
+          "root": false,
+          "rootEmpty": false,
+          "_timeout": 2000
+        }
+      ],
+      "passes": [],
+      "failures": [],
+      "pending": [],
+      "skipped": [],
+      "duration": 0,
+      "root": true,
+      "rootEmpty": true,
+      "_timeout": 2000
+    }
+  ],
+  "meta": {
+    "mocha": {
+      "version": "11.0.1"
+    },
+    "mochawesome": {
+      "options": {
+        "quiet": false,
+        "reportFilename": "mochawesome",
+        "saveHtml": true,
+        "saveJson": true,
+        "consoleReporter": "spec",
+        "useInlineDiffs": false,
+        "code": true
+      },
+      "version": "7.1.3"
+    },
+    "marge": {
+      "options": null,
+      "version": "6.2.0"
+    }
+  }
+}

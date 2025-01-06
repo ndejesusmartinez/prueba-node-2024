@@ -1,14 +1,14 @@
 {
     "openapi": "3.0.0",
     "info": {
-        "title": "Documentation",
+        "title": "Documentacion API",
         "version": "1.0.0",
-        "description": "Detailed API documentation with examples for each endpoint"
+        "description": "Documentacion detallada para cada endpoint"
     },
     "servers": [
         {
             "url": "https://cdizdolpz4.execute-api.us-east-1.amazonaws.com/dev",
-            "description": "Servidor"
+            "description": "Servidor AWS"
         }
     ],
     "components": {
@@ -144,6 +144,12 @@
                 "example": {
                     "status": "success"
                 }
+            },
+            "userCreated": {
+                "type": "object",
+                "example": {
+                    "status": "success"
+                }
             }
         }
     },
@@ -263,7 +269,7 @@
                         "content": {
                             "application/json": {
                                 "schema": {
-                                    "$ref": "#/components/schemas/User"
+                                    "$ref": "#/components/schemas/userCreated"
                                 }
                             }
                         }

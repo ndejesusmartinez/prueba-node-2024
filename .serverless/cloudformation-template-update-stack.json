@@ -109,7 +109,7 @@
       "Properties": {
         "Code": {
           "S3Bucket": "serverless-framework-deployments-us-east-1-1edfa506-0631",
-          "S3Key": "serverless/api/dev/1736101104020-2025-01-05T18:18:24.020Z/api.zip"
+          "S3Key": "serverless/api/dev/1736109182795-2025-01-05T20:33:02.795Z/api.zip"
         },
         "Handler": "server.handler",
         "Runtime": "nodejs16.x",
@@ -132,7 +132,7 @@
       "Properties": {
         "Code": {
           "S3Bucket": "serverless-framework-deployments-us-east-1-1edfa506-0631",
-          "S3Key": "serverless/api/dev/1736101104020-2025-01-05T18:18:24.020Z/api.zip"
+          "S3Key": "serverless/api/dev/1736109182795-2025-01-05T20:33:02.795Z/api.zip"
         },
         "Handler": "server.handler",
         "Runtime": "nodejs16.x",
@@ -155,7 +155,7 @@
       "Properties": {
         "Code": {
           "S3Bucket": "serverless-framework-deployments-us-east-1-1edfa506-0631",
-          "S3Key": "serverless/api/dev/1736101104020-2025-01-05T18:18:24.020Z/api.zip"
+          "S3Key": "serverless/api/dev/1736109182795-2025-01-05T20:33:02.795Z/api.zip"
         },
         "Handler": "server.handler",
         "Runtime": "nodejs16.x",
@@ -178,7 +178,7 @@
       "Properties": {
         "Code": {
           "S3Bucket": "serverless-framework-deployments-us-east-1-1edfa506-0631",
-          "S3Key": "serverless/api/dev/1736101104020-2025-01-05T18:18:24.020Z/api.zip"
+          "S3Key": "serverless/api/dev/1736109182795-2025-01-05T20:33:02.795Z/api.zip"
         },
         "Handler": "swagger.handler",
         "Runtime": "nodejs16.x",
@@ -196,44 +196,44 @@
         "SwaggerDocServiceLogGroup"
       ]
     },
-    "HangarServiceLambdaVersion8lrUEEom6jHcH6xeJSmbriSv96uMQqeqGiI5qbAjFE": {
+    "HangarServiceLambdaVersionH2DGy5wZNxvGR1YGzeg0kN9uqNG0HUwgImvBLr12eI": {
       "Type": "AWS::Lambda::Version",
       "DeletionPolicy": "Retain",
       "Properties": {
         "FunctionName": {
           "Ref": "HangarServiceLambdaFunction"
         },
-        "CodeSha256": "CbyR3ycaQtyrwerp1QS8qGKmb1Gwoi3yv3RfzqJ+RMI="
+        "CodeSha256": "gnTP1Lj+6xco5bA3h3n9z5KPD/QrrZHkUbOGQWan3q0="
       }
     },
-    "UserServiceLambdaVersionVEBMgHHaEq3USF9FFz1IAZa1iXL4nl62y3ds5WFIzg": {
+    "UserServiceLambdaVersion3wSCICtMC3B6skJ1A6A71IiQEyZVANEF0F9YZWz4k": {
       "Type": "AWS::Lambda::Version",
       "DeletionPolicy": "Retain",
       "Properties": {
         "FunctionName": {
           "Ref": "UserServiceLambdaFunction"
         },
-        "CodeSha256": "CbyR3ycaQtyrwerp1QS8qGKmb1Gwoi3yv3RfzqJ+RMI="
+        "CodeSha256": "gnTP1Lj+6xco5bA3h3n9z5KPD/QrrZHkUbOGQWan3q0="
       }
     },
-    "LoginServiceLambdaVersionvs4V8QwsirBw6rJsuv15VLDPMIajbTHGQUwzdzkAeY": {
+    "LoginServiceLambdaVersionRZWc5K9EB80NYIGnGM94MJMmdArFAKlLOTWJv6Ne5s": {
       "Type": "AWS::Lambda::Version",
       "DeletionPolicy": "Retain",
       "Properties": {
         "FunctionName": {
           "Ref": "LoginServiceLambdaFunction"
         },
-        "CodeSha256": "CbyR3ycaQtyrwerp1QS8qGKmb1Gwoi3yv3RfzqJ+RMI="
+        "CodeSha256": "gnTP1Lj+6xco5bA3h3n9z5KPD/QrrZHkUbOGQWan3q0="
       }
     },
-    "SwaggerDocServiceLambdaVersionihZKtj9JWH7avF5N6IUSiPRera22iYN2DG4EHYq8": {
+    "SwaggerDocServiceLambdaVersionuuBZKNphcycdLmF70B8kmssftD4zfIak4h7WURy89Y": {
       "Type": "AWS::Lambda::Version",
       "DeletionPolicy": "Retain",
       "Properties": {
         "FunctionName": {
           "Ref": "SwaggerDocServiceLambdaFunction"
         },
-        "CodeSha256": "CbyR3ycaQtyrwerp1QS8qGKmb1Gwoi3yv3RfzqJ+RMI="
+        "CodeSha256": "gnTP1Lj+6xco5bA3h3n9z5KPD/QrrZHkUbOGQWan3q0="
       }
     },
     "ApiGatewayRestApi": {
@@ -881,7 +881,7 @@
         "SwaggerDocServiceLambdaPermissionApiGateway"
       ]
     },
-    "ApiGatewayDeployment1736101094718": {
+    "ApiGatewayDeployment1736109173619": {
       "Type": "AWS::ApiGateway::Deployment",
       "Properties": {
         "RestApiId": {
@@ -1063,7 +1063,7 @@
     "HangarServiceLambdaFunctionQualifiedArn": {
       "Description": "Current Lambda function version",
       "Value": {
-        "Ref": "HangarServiceLambdaVersion8lrUEEom6jHcH6xeJSmbriSv96uMQqeqGiI5qbAjFE"
+        "Ref": "HangarServiceLambdaVersionH2DGy5wZNxvGR1YGzeg0kN9uqNG0HUwgImvBLr12eI"
       },
       "Export": {
         "Name": "sls-api-dev-HangarServiceLambdaFunctionQualifiedArn"
@@ -1072,7 +1072,7 @@
     "UserServiceLambdaFunctionQualifiedArn": {
       "Description": "Current Lambda function version",
       "Value": {
-        "Ref": "UserServiceLambdaVersionVEBMgHHaEq3USF9FFz1IAZa1iXL4nl62y3ds5WFIzg"
+        "Ref": "UserServiceLambdaVersion3wSCICtMC3B6skJ1A6A71IiQEyZVANEF0F9YZWz4k"
       },
       "Export": {
         "Name": "sls-api-dev-UserServiceLambdaFunctionQualifiedArn"
@@ -1081,7 +1081,7 @@
     "LoginServiceLambdaFunctionQualifiedArn": {
       "Description": "Current Lambda function version",
       "Value": {
-        "Ref": "LoginServiceLambdaVersionvs4V8QwsirBw6rJsuv15VLDPMIajbTHGQUwzdzkAeY"
+        "Ref": "LoginServiceLambdaVersionRZWc5K9EB80NYIGnGM94MJMmdArFAKlLOTWJv6Ne5s"
       },
       "Export": {
         "Name": "sls-api-dev-LoginServiceLambdaFunctionQualifiedArn"
@@ -1090,7 +1090,7 @@
     "SwaggerDocServiceLambdaFunctionQualifiedArn": {
       "Description": "Current Lambda function version",
       "Value": {
-        "Ref": "SwaggerDocServiceLambdaVersionihZKtj9JWH7avF5N6IUSiPRera22iYN2DG4EHYq8"
+        "Ref": "SwaggerDocServiceLambdaVersionuuBZKNphcycdLmF70B8kmssftD4zfIak4h7WURy89Y"
       },
       "Export": {
         "Name": "sls-api-dev-SwaggerDocServiceLambdaFunctionQualifiedArn"

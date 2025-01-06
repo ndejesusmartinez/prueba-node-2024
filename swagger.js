@@ -5,7 +5,7 @@ export const handler = async (event) => {
     <!DOCTYPE html>
     <html>
     <head>
-      <title>API Documentation</title>
+      <title>Documentacion API</title>
       <link rel="stylesheet" href="https://unpkg.com/swagger-ui-dist/swagger-ui.css" />
     </head>
     <body>
